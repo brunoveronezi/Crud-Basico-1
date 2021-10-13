@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Crud.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Cadastro";
+}
+
+
+
+<table class="table table-hover" >
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cpf)
+            </th>
+            <th>
+                <a asp-action="AddOuEditar" class="btn-outline-sucess" ><i class="far fa-plus-square"></i>Novo</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cpf)
+            </td>
+            <td>
+                <a asp-action="AddOuEditar" asp-route-id="@item.ClienteId"><i class="fa fa-marker fa-lg"></i></a>
+                <a asp-action="Delete" asp-route-id="@item.ClienteId" onclick="return confirm('Você tem certeza?')" class="text-danger ml-1"><i class="fa fa-trash-alt fa lg"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
